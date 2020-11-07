@@ -89,7 +89,7 @@ ul > li {
     position: absolute;
 }
 
-#menu__toggle:checked ~ #mainMenu > :last-child .menu__box {
+#menu__toggle:checked ~ .menu__box {
     transform: translateX(0px) scale(1, 1);
 }
 
