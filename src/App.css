@@ -1,38 +1,346 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ul,
+h1,
+h2,
+h3,
+h4,
+hr,
+p {
+    margin: 0;
+    padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+ul > li {
+    list-style-type: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#wrapper {
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#main {
+    display: flex;
+    flex-grow: 1;
+    margin-top: 15%;
+}
+#main .container {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 40vh;
+}
+
+#header {
+    position: relative;
+    z-index: 1;
+}
+
+#header .container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#header .main-nav {
+    padding-right: 40px;
+}
+
+#mainMenu {
+    display: flex;
+    flex-direction: row;
+}
+
+#mainMenu li {
+    padding: 10px 10px 15px 10px;
+}
+
+#mainMenu li a {
+    text-decoration: none;
+    color: grey;
+}
+
+#menu__toggle {
+    opacity: 0;
+    position: absolute;
+}
+
+#menu__toggle:checked ~ #mainMenu > :last-child .menu__box {
+    transform: translateX(0px) scale(1, 1);
+}
+
+.menu__box {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    padding: 0;
+    margin: 0;
+    background: #ccc;
+    overflow: hidden;
+    opacity: 50%;
+    transform: translateX(300px) scale(2, 2);
+    transition: transform 0.8s cubic-bezier(0.3, -1, 0.1, 1.5);
+}
+
+.menu__box:hover {
+    opacity: 100%;
+    transition: opacity 0.8s ease;
+}
+
+.menu__btn {
+    /* используем flex для центрирования содержимого */
+    display: flex;
+    align-items: center; /* центрируем содержимое кнопки */
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+}
+.menu__btn > span::before {
+    content: "";
+    top: -8px;
+}
+.menu__btn > span::after {
+    content: "";
+    top: 8px;
+}
+.menu__box {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.menu__box .menu__item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu__box #accaunt {
+    width: 43px;
+    height: 40px;
+    background: url(./components/ToggleMenu/accaunt.png) no-repeat 50% 50% /
+        100%;
+}
+.menu__box #search {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/search.png) no-repeat 50% 50% / 100%;
+}
+
+.menu__box #myBusiness {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/myBusiness.png) no-repeat 50% 50% /
+        100%;
+}
+.menu__box #maps {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/Maps.png) no-repeat 50% 50% / 100%;
+}
+.menu__box #YT {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/YT.png) no-repeat 50% 50% / 100%;
+}
+.menu__box #play {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/Play.png) no-repeat 50% 50% / 100%;
+}
+.menu__box #news {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/news.png) no-repeat 50% 50% / 100%;
+}
+.menu__box #mail {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/mail.png) no-repeat 50% 50% / 100%;
+}
+.menu__box #meet {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/Meet.png) no-repeat 50% 50% / 100%;
+}
+.menu__box #contacts {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/contacts.png) no-repeat 50% 50% /
+        100%;
+}
+.menu__box #disc {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/disc.png) no-repeat 50% 50% / 100%;
+}
+.menu__box #calend {
+    width: 37px;
+    height: 38px;
+    background: url(./components/ToggleMenu/calend.png) no-repeat 50% 50% / 100%;
+}
+
+.menu__box .menu__item p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.menu__box > li {
+    padding: 5px;
+    width: 50%;
+}
+
+#logo {
+    margin: 0 auto;
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    background: url(./components/Logo/goo-logo.png) no-repeat 50% 50% / 100%;
+}
+
+#searchBar {
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    border-radius: 24px;
+    height: 44px;
+    margin: 0 auto;
+    width: 482px;
+    display: flex;
+    justify-content: center;
+}
+
+#searchBar input {
+    font-size: 22px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    height: 40px;
+    width: 382px;
+}
+
+#searchButtons {
+    display: flex;
+    justify-content: center;
+}
+
+#searchButtons input {
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    color: #5f6368;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    margin: 11px 4px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 36px;
+    min-width: 54px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+#searchButtons input:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom, #f8f8f8, #f1f1f1);
+    background-color: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    color: #222;
+}
+
+#searchInfo {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    margin: 0 auto;
+    font-size: 14px;
+    color: grey;
+}
+
+#searchInfo > span,
+#searchInfo > span > ul {
+    display: flex;
+    flex-direction: row;
+}
+
+#searchInfo > span > ul > li {
+    padding: 0 5px;
+}
+
+#searchInfo > span > ul > li > a:hover {
+    text-decoration: none;
+}
+
+#footer .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    background-color: #f2f2f2;
+}
+
+#footerLeft,
+#footerRight {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+}
+
+#footerLeft li,
+#footerRight li {
+    padding: 0 10px;
+}
+
+#footerLeft a,
+#footerRight a {
+    text-decoration: none;
+    color: grey;
+}
+
+#footerLeft a:hover,
+#footerRight a:hover {
+    color: black;
 }
